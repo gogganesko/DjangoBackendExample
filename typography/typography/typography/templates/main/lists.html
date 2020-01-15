@@ -1,0 +1,75 @@
+
+{% extends 'index.html' %}
+
+{% block indexsalestitle %}Популярные акции{% endblock %}
+
+{% block indexsalescontent %}
+
+	{% if last_sales_list %}
+	
+		{% for s in last_sales_list %}
+			<figure>
+				<img src="{{s.sale_image.url}}">
+					<figcaption>
+					<h1>{{s.sale_name}}</h1>
+					<p>{{s.sale_description}}</p>
+					</figcaption>
+			</figure>
+		{% endfor %}
+
+	{% else %}
+		Скидок нету=(
+	{% endif %}
+
+{% endblock %}		
+		
+
+{% block indexreviewstitle %}Отзывы о нас{% endblock %}
+
+{% block indexreviewslist %}
+
+	{% if last_reviews_list %}
+	
+		{% for s in last_reviews_list %}
+		<div id="badge">		  
+		  <header>
+			<a href="{{s.review_screenshot.url}}" class="lightzoom" title="My Caption">
+			<img src="{{s.review_screenshot.url}}" alt="image">
+			</a>
+		  </header>
+		  
+		  <section class="all">
+		    
+		    <div class="info">
+		      <div class="total">
+		        <span>{{s.reviewanswer_set.count}}</span> Комментарии
+		      </div>
+		      <!-- <button>Перейти к отзыву</button> -->
+		      <div class="clear"></div>
+		    </div>		    		   		    
+		    <div class="list">
+		    	{% if s.reviewanswer_set.all %}
+		    		{% for comment in s.reviewanswer_set.all %}
+				      <section>	<!-- У этого секшина стоял класс first хз зачем -->	        
+				        <div class="img">
+				          <img src="{{comment.reviewanswer_author.worker_image.url}}" alt="" />
+				        </div>		        
+				        <div class="comments">
+				          <h3>{{comment.reviewanswer_author.worker_name}}</h3>
+				          <p>{{comment.reviewanswer_text}}</p>
+				        </div>
+				        </section>   
+		        	{% endfor %}
+		        {% endif %}
+		        
+		    </div>		    
+		  </section>
+		</div>
+		{% endfor %}
+
+	{% else %}
+		Отзывов нету =(
+	{% endif %}
+
+{% endblock %}		
+		

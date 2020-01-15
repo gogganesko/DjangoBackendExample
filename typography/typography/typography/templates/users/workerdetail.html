@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1">
+	<title>Профиль</title>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="mainheader">
+			<div class="logo">				
+				<img src="{% static 'img/newspaper.png' %}" alt="">
+				<p><a href="">Типография на Ленина</a></p>					 
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+				
+			</div>
+			<div class="social">
+
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+			<div class="login">
+				<img src="{% static 'img/user.png' %}" alt="">
+				{% if user.is_authenticated %}
+				<p><a href="#">{{user.username}}</a></p>
+				<a href="{% url 'logout' %}"><button class="loginbutton" type="button">Выйти</button></a>
+				{% else %}
+				<p><a href="{% url 'login' %}">Гость</a></p>
+				<a href="{% url 'login' %}"><button class="loginbutton" type="button">Войти</button></a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<div class="content prflcnt">
+	<div class="topnav" id="myTopnav">
+		  <a href="{% url 'main:index' %}">Главная</a>
+		  <a href="{% url 'services:index' %}" class="activem">Каталог</a>
+		  <a href="{% url 'services:sales' %}">Акции</a>
+		  <a href="{% url 'main:pay' %}">Оплата</a>
+		  <a href="{% url 'services:reviews' %}">Отзывы</a>
+		  <a href="{% url 'main:contacts' %}">Контакты</a>
+		  <a href="{% url 'users:index' %}">Работники</a>
+		  <a href="{% url 'orders:orders' %}">Заказы</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    <i class="fa fa-bars"></i>
+	  </a>
+	</div>
+	<ul class="breadcrumb">
+	  <li><a href="{% url 'main:index' %}">Главная</a></li>
+	  <li><a href="{% url 'users:index' %}">Работники</a></li>
+	  <li class="activem">{{worker.worker_name}}</li>
+	</ul>
+	<div class="catalogtitle"><h1>{{worker.worker_name}}</h1></div>
+	<div class="tabs">
+		    <input type="radio" name="inset" value="" id="tab_1" checked>
+		    <label for="tab_1">Аналитика</label>
+
+		   
+		    <div id="txt_1">
+		        <div class="information">
+				 	<fieldset>
+				 		<legend>Оснонвные сведения</legend>
+				 		<div class="fieldcontent">				 		
+				 		<p>ФИО:<label for="">{{worker.worker_name}}</label></p>
+				 		<p>Дата рождения:<label for="">{{worker.worker_birthdaydate}}</label></p>
+				 		<p>Номер телефона:<label for="">{{worker.worker_telephonenumber}}</label></p>
+				 		<p>e-mail:<label for="">{{worker.worker_email}}</label></p>
+				 		<!-- <div class="chlogbtn"><button>Смена логина</button></div> -->
+				 		</div>
+					</fieldset>
+	 			</div>
+	 			<div class="filtersearch">
+				 	<fieldset>
+				 		<legend>Фильтр и поиск <a href="#" class="hide">(скрыть)</a><a href="#" class="show">(показать)</a></legend>
+				 		<div class="inp">
+				 			<form action="{% url 'users:workerdetail' worker.id %}">
+					<input type="date" name="defaultdatestart" value={{defaultdatestart.date|date:"Y-m-d"}}>
+					<span>-</span>
+					<input type="date" name="defaultdateend" value={{defaultdateend.date|date:"Y-m-d"}}>	
+					<input type="text" name="ID" placeholder="ID">
+					</div>
+					<div class="sel">
+					<select value="Не выбрано" name="service">
+						<option>Не выбрано</option>
+					 {% for s in services_list %}
+					  <option>{{s.service_name}}</option>
+					  {% endfor %}
+					</select>
+					<select value="Не выбрано" name="client">
+						<option>Не выбрано</option>
+					 {% for c in client_list %}
+					  <option>{{c.client_name}}</option>
+					  {% endfor %}
+					</select>
+					<select name="ascordesc">
+						<option>Сначала дешевые</option>
+					  <option>Сначала дорогие</option>
+					  		  
+					</select>
+					</div>
+					<div class="findbtn"><button type="submit">Найти</button></div>
+					</form>
+					</fieldset>
+	 			</div>
+	 			<h2 align="center" id="summ">Итого заработано: {{sumprice}} руб.</h2>
+	 			<div class="ordercards">
+	 				{% if worker.order_set.all %}
+	 						{% for o in order_list %}
+								<div class="card_container">
+								  <img src="{{o.order_image.url}}" alt="Avatar" class="card_imag">
+								  <div class="vertical-line"/></div>
+								  <p><span>{{o.order_service.service_name}}({{o.order_client.client_name}})</span></p>
+								  <p>Последняя активность: {{o.order_date.date|date:"Y-m-d"}}
+								  </p>
+								  <p>Статус: {{o.order_state}}</p>
+								  <p>Стоимоть: {{o.order_price}} руб.</p>
+								  <p>Количество: {{o.order_count}} шт.</p>							  
+								 <!--  <button class='del'>Удалить</button> -->
+								  <a href="{% url 'orders:orderdetail' o.id %}"><button class='more'>Подробнее</button></a>
+								</div> 
+							{% endfor %}
+					{% else %}
+						Zakazov net=(
+					{% endif %}
+		    	</div>
+				
+
+	 		</div>
+
+		    </div>
+		</div>
+	</div>
+	<footer>
+		<div class="mainfooter">
+			<div class="logo">
+				<img src="{% static 'img/newspaper.png'%}" alt="">
+				<p>Типография на Ленина</p>
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+			</div>
+				
+			<div class="social">
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+ <script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script>
+$(document).ready(function(){
+  $(".filtersearch .hide").click(function(){
+	$(".hide").toggle()
+	$(".show").css('display', 'inline-block')
+    $("fieldset input,fieldset select,fieldset button, fieldset span").hide();
+  });
+});
+$(document).ready(function(){
+  $(".filtersearch .show").click(function(){
+	$(".show").toggle()
+	$(".hide").toggle()
+    $("fieldset input,fieldset select,fieldset button, fieldset span").show();
+  });
+});
+</script>
+</body>
+
+</html>

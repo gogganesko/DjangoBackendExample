@@ -1,0 +1,23 @@
+{% extends 'sales.html' %}
+
+{% block salescontent %}
+
+	{% if sales_list %}
+	
+		{% for s in sales_list %}
+			<figure>
+  			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVa9w65NHmD77TvvGGPK_s2eF9ysGTa92c-X4jfO1lz0gQoXDL">
+	  			<figcaption>
+		    		<h1>{{s.sale_name}}</h1>
+		    		<p>{{s.sale_description}}</p>
+		    		<div class="catbtn"><a href="sale.html"><button>Подробнее</button></a></div>
+	  			</figcaption>
+			</figure>
+		{% endfor %}
+
+	{% else %}
+		Сервисов нету=(
+	{% endif %}
+
+{% endblock %}		
+		

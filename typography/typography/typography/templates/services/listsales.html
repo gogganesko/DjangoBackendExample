@@ -1,0 +1,44 @@
+{% extends 'sales.html' %}
+
+{% block salescontent %}
+
+	{% if sales_list %}
+	
+		{% for s in sales.object_list %}
+			<figure>
+  			<img src="{{s.sale_image.url}}">
+	  			<figcaption>
+		    		<h1>{{s.sale_name}}</h1>
+		    		<p>{{s.sale_description}}</p>
+		    		<div class="catbtn"><a href="{% url 'services:saledetail' s.id %}"><button>Подробнее</button></a></div>
+	  			</figcaption>
+			</figure>
+		{% endfor %}
+
+	{% else %}
+		Акций нету=(
+	{% endif %}
+
+{% endblock %}
+	
+{% block pagination %}		
+	<div class="pagination">
+
+			{% if sales.has_previous %}
+				<a href="?page={{sales.previous_page_number}}">Назад</a>
+			{% endif %}
+			{% for pg in sales.paginator.page_range %}
+				{% if sales.number == pg %}
+				<a class="active" href="?page={{pg}}">{{pg}}</a>				
+				{% else %}
+				<a href="?page={{pg}}">{{pg}}</a>
+				{% endif %}
+			{% endfor %}
+			{% if sales.has_next %}
+				<a href="?page={{sales.next_page_number}}">Далее</a>
+			{% endif %}
+	</div>
+{% endblock %}	
+
+		
+		

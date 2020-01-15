@@ -1,0 +1,60 @@
+
+{% extends 'index.html' %}
+
+{% block indexreviewslist %}Отзывы о нас{% endblock %}
+
+{% block indexreviewslist %}
+
+	{% if last_sales_list %}
+	
+		{% for s in last_sales_list %}
+		<div id="badge">		  
+		  <header>
+			<a href="https://sun9-29.userapi.com/c855228/v855228177/12d1af/i8QI4dAYOAo.jpg" class="lightzoom" title="My Caption">
+			<img src="https://sun9-29.userapi.com/c855228/v855228177/12d1af/i8QI4dAYOAo.jpg" alt="image">
+			</a>
+		  </header>
+		  
+		  <section class="all">
+		    
+		    <div class="info">
+		      <div class="total">
+		        <span>2</span> Комментарии
+		      </div>
+		      <!-- <button>Перейти к отзыву</button> -->
+		      <div class="clear"></div>
+		    </div>		    		   		    
+		    <div class="list">
+		      <section class="first">		        
+		        <div class="img">
+		          <img src="https://sun9-43.userapi.com/c639121/v639121962/2e504/QdfgKddkN2o.jpg" alt="" />
+		        </div>		        
+		        <div class="comments">
+		          <h3>Админ</h3>
+		          <p>Соре</p>
+		        </div>
+		        
+		      </section>
+
+		      <section>
+		        
+		        <div class="img">
+		          <img src="https://sun9-43.userapi.com/c639121/v639121962/2e504/QdfgKddkN2o.jpg" alt="" />
+		        </div>
+		        
+		        <div class="comments">
+		          <h3>Админ</h3>
+		          <p>У нас типография а не гуглплэй</p>
+		        </div>		        
+		      </section>      
+		    </div>		    
+		  </section>
+		</div>
+		{% endfor %}
+
+	{% else %}
+		Скидок нету=(
+	{% endif %}
+
+{% endblock %}		
+		

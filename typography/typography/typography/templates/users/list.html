@@ -1,0 +1,46 @@
+
+{% extends 'workers.html' %}
+
+{% block workerscontent %}
+
+	{% if workers_list %}
+	
+		{% for s in workers.object_list %}
+					<div class="card_container">
+					  <img src="{{s.worker_image.url}}" alt="Avatar" class="card_imag">
+					  <div class="vertical-line"/></div>
+					  <p><span>{{s.worker_name}}</span></p>					  
+					  	<p>{% for p in s.worker_service.all %}
+							<p>{{p}}</p>
+							{% endfor %}
+					  	</p>
+					  	{% if user.worker %}
+						<a href="{% url 'users:workerdetail' s.id %}"><button class='more'>Подробнее</button></a>
+						{% endif %}	
+					</div>
+		{% endfor %}
+
+	{% else %}
+		Сервисов нету=(
+	{% endif %}
+
+{% endblock %}		
+		
+{% block pagination %}		
+	<div class="pagination">
+
+			{% if workers.has_previous %}
+				<a href="?page={{workers.previous_page_number}}">Назад</a>
+			{% endif %}
+			{% for pg in workers.paginator.page_range %}
+				{% if workers.number == pg %}
+				<a class="active" href="?page={{pg}}">{{pg}}</a>				
+				{% else %}
+				<a href="?page={{pg}}">{{pg}}</a>
+				{% endif %}
+			{% endfor %}
+			{% if workers.has_next %}
+				<a href="?page={{workers.next_page_number}}">Далее</a>
+			{% endif %}
+	</div>
+{% endblock %}

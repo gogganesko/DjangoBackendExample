@@ -1,0 +1,91 @@
+
+{% extends 'reviews.html' %}
+
+{% block search %}
+<form action="{% url 'services:reviews' %}">
+    <input type="date" name="datestartinp" value={{defaultdatestart.date|date:"Y-m-d"}}>
+	<span>-</span>
+	<input type="date" name="dateendinp" value={{defaultdateend.date|date:"Y-m-d"}}>
+		<!-- <select name="searchprinttype">
+		  <option>Не выбрано</option>
+		{% if printtypelist %}
+			{% for p in printtypelist %}
+			  <option>{{p.printtype_name}}</option>
+			{% endfor %}
+		{% else %}
+			  <option>Нету типов печати</option>
+		{% endif %}
+		</select>
+		<select name="searchpriceascdesc">
+		  <option>Сначала дешевые</option>
+		  <option>Сначала дорогие</option>				  		  
+		</select> -->
+	<div class="srchbtn" type =submit><button>Найти</button></div>
+</form>	
+{% endblock %}
+
+{% block reviewslist %}
+
+	{% if reviews_list %}
+	
+		{% for s in reviews.object_list %}
+		<div id="badge">		  
+		  <header>
+			<a href="{{s.review_screenshot.url}}" class="lightzoom" title="My Caption">
+			<img src="{{s.review_screenshot.url}}" alt="image">
+			</a>
+		  </header>
+		  
+		  <section class="all">
+		    
+		    <div class="info">
+		      <div class="total">
+		        <span>{{s.reviewanswer_set.count}}</span> Комментарии
+		      </div>
+		      <!-- <button>Перейти к отзыву</button> -->
+		      <div class="clear"></div>
+		    </div>		    		   		    
+		    <div class="list">
+		    	{% if s.reviewanswer_set.all %}
+		    		{% for comment in s.reviewanswer_set.all %}
+				      <section>	<!-- У этого секшина стоял класс first хз зачем -->	        
+				        <div class="">
+				          <img src="{{comment.reviewanswer_author.worker_image.url}}" alt="" />
+				        </div>		        
+				        <div class="comments">
+				          <h3>{{comment.reviewanswer_author.worker_name}}</h3>
+				          <p>{{comment.reviewanswer_text}}</p>
+				        </div>
+				        </section> 
+		        	{% endfor %}
+		        {% endif %}
+		    </div>		    
+		  </section>
+		</div>
+		{% endfor %}
+
+	{% else %}
+		Отзывов нету =(
+	{% endif %}
+
+{% endblock %}		
+		
+
+{% block pagination %}		
+	<div class="pagination">
+
+			{% if reviews.has_previous %}
+				<a href="?page={{reviews.previous_page_number}}">Назад</a>
+			{% endif %}
+			{% for pg in reviews.paginator.page_range %}
+				{% if reviews.number == pg %}
+				<a class="active" href="?page={{pg}}">{{pg}}</a>				
+				{% else %}
+				<a href="?page={{pg}}">{{pg}}</a>
+				{% endif %}
+			{% endfor %}
+			{% if reviews.has_next %}
+				<a href="?page={{reviews.next_page_number}}">Далее</a>
+			{% endif %}
+	</div>
+{% endblock %}			

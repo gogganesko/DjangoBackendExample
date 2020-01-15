@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1">
+	<title>Контакты</title>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="mainheader">
+			<div class="logo">				
+				<img src="{% static 'img/newspaper.png' %}" alt="">
+				<p><a href="">Типография на Ленина</a></p>					 
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+				
+			</div>
+			<div class="social">
+
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+			<div class="login">
+				<img src="{% static 'img/user.png' %}" alt="">
+				{% if user.is_authenticated %}
+				<p><a href="#">{{user.username}}</a></p>
+				<a href="{% url 'logout' %}"><button class="loginbutton" type="button">Выйти</button></a>
+				{% else %}
+				<p><a href="{% url 'login' %}">Гость</a></p>
+				<a href="{% url 'login' %}"><button class="loginbutton" type="button">Войти</button></a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<div class="content contcont">
+	<div class="topnav" id="myTopnav">
+		  <a href="{% url 'main:index' %}">Главная</a>
+		  <a href="{% url 'services:index' %}" class="activem">Каталог</a>
+		  <a href="{% url 'services:sales' %}">Акции</a>
+		  <a href="{% url 'main:pay' %}">Оплата</a>
+		  <a href="{% url 'services:reviews' %}">Отзывы</a>
+		  <a href="{% url 'main:contacts' %}">Контакты</a>
+		  <a href="{% url 'users:index' %}">Работники</a>
+		  {% if user.is_authenticated %}
+		  <a href="{% url 'orders:orders' %}">Заказы</a>
+		  {% endif %}
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    <i class="fa fa-bars"></i>
+	  </a>
+	</div>
+	<ul class="breadcrumb">
+	  <li><a href="{% url 'main:index' %}">Главная</a></li>
+	  <li class="activem">Контакты</li>
+	</ul>
+	<div class="title"><h1>Контакты</h1></div>
+	<div class="contactcontent">
+		<p>Нашу типографию вы можете найти по адрессу г. Иркутск, ул. Ленина, д. 11. Типографи работает с 09:00 часов утра до 18:00 часов вечера. Связаться с нами вы можете по телефону 88005553535. Также для вас доступна наша эллектронная почта typography38@gmail.com. Помимо всего этого связь можно осуществить с помощью наших групп в социальных сетях "вконтакте","одноклассники", "инстаграмм" и "фэйсбук".</p>
+	</div>
+	<div class="icons"> 
+		<div class="icon1">
+		<img src="{% static 'img/phone.png' %}" alt="">
+		<span>880055533535</span>
+		</div>
+		<div class="icon2">
+		<img src="{% static 'img/location.png' %}" alt="">
+		<span>ул. Ленина, д.11</span>
+		</div>
+		<div class="icon3">
+		<img src="{% static 'img/clock.png' %}" alt="">
+		<span>09:00 - 18:00</span>
+		</div>
+		<div class="icon4">
+		<img src="{% static 'img/email.png' %}" alt="">
+		<span>typography38@gmail.com</span>
+		</div>
+	</div>
+		<div class="contbtn"><a href="{% url 'main:writeus'%}"><button>Написать нам</button></a></div>
+	<div class="loctitle"><h2>Наше расположение</h2></div>
+	<div class="map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2440.936985221392!2d104.28000181615045!3d52.28084597976975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83b4c83aaf8f9%3A0xbcf9d51d4b472196!2z0YPQuy4g0JvQtdC90LjQvdCwLCAxMSwg0JjRgNC60YPRgtGB0LosINCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LsuLCA2NjQwMjU!5e0!3m2!1sru!2sru!4v1570447794392!5m2!1sru!2sru" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+	</div>
+
+	</div>
+	<footer>
+		<div class="mainfooter">
+			<div class="logo">
+				<img src="{% static 'img/newspaper.png'%}" alt="">
+				<p>Типография на Ленина</p>
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+			</div>
+				
+			<div class="social">
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+ <script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+</body>
+
+</html>

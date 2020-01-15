@@ -1,0 +1,25 @@
+
+{% extends 'index.html' %}
+
+{% block indexsalestitle %}Популярные акции{% endblock %}
+
+{% block indexsalescontent %}
+
+	{% if last_sales_list %}
+	
+		{% for s in last_sales_list %}
+			<figure>
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVa9w65NHmD77TvvGGPK_s2eF9ysGTa92c-X4jfO1lz0gQoXDL">
+					<figcaption>
+					<h1>{{s.sale_name}}</h1>
+					<p>{{s.sale_description}}</p>
+					</figcaption>
+			</figure>
+		{% endfor %}
+
+	{% else %}
+		Скидок нету=(
+	{% endif %}
+
+{% endblock %}		
+		

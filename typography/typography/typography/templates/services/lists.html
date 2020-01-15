@@ -1,0 +1,66 @@
+	
+{% extends 'catalog.html' %}
+{% block search %}
+	 		<form action="{% url 'services:index' %}">
+				<input type="text" placeholder="Наименование" name="searchtext">
+				<select name="searchprinttype">
+				  <option>Не выбрано</option>
+			{% if printtypelist %}
+				{% for p in printtypelist %}
+				  <option>{{p.printtype_name}}</option>
+				{% endfor %}
+			{% else %}
+				  <option>Нету типов печати</option>
+			{% endif %}
+				</select>
+
+				<select name="searchpriceascdesc">
+				  <option>Сначала дешевые</option>
+				  <option>Сначала дорогие</option>				  		  
+				</select>
+				</div>
+				<div class="findbtn" type="submit"><button>Найти</button></div>
+			</form>
+{% endblock %}
+{% block catalogcontent %}
+
+	{% if services_list %}
+	
+		{% for s in services.object_list %}
+			<figure>
+  			<img src="{{s.service_image.url}}">
+	  			<figcaption>
+		    		<h1>{{s.service_name}}</h1>
+		    		<p>{{s.service_description}}</p>
+		    		<p><span class="price">{{s.service_price}}</span></p>
+		    		<div class="catbtn"><a href="{% url 'services:servicedetail' s.id %}"><button>Подробнее</button></a></div>
+	  			</figcaption>
+			</figure>
+		{% endfor %}
+
+	{% else %}
+		Сервисов нету=(
+	{% endif %}
+
+{% endblock %}		
+
+
+{% block pagination %}		
+	<div class="pagination">
+
+			{% if services.has_previous %}
+				<a href="?page={{services.previous_page_number}}">Назад</a>
+			{% endif %}
+			{% for pg in services.paginator.page_range %}
+				{% if services.number == pg %}
+				<a class="active" href="?page={{pg}}">{{pg}}</a>				
+				{% else %}
+				<a href="?page={{pg}}">{{pg}}</a>
+				{% endif %}
+			{% endfor %}
+			{% if services.has_next %}
+				<a href="?page={{services.next_page_number}}">Далее</a>
+			{% endif %}
+	</div>
+{% endblock %}		
+	

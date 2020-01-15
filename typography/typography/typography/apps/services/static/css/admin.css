@@ -1,0 +1,1211 @@
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header{
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+}
+header button{
+  font-size:1.1em;
+}
+.content{
+   /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 1 0 auto;
+}
+footer{
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+}
+
+body{
+  height: 100%;
+  background-color: #F2F2F2;
+  color: #0D0D0D;
+  /*font-family:'Open Sans', serif,sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+/*header css*/
+
+
+.mainheader{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  flex:2;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+  font-style: bold; 
+}
+
+.logo p{
+  flex: 1 1 200px;
+    padding:10px;
+
+}
+
+.logo a{
+  text-decoration: none;
+  color:#000;
+  font-size: 1.2em;
+}
+
+.logo img{
+  height:50px;
+  width: 50px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.logo img:hover{
+  background-color: #F2F2F2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.contacts{
+  display: flex;
+  flex:3;
+  align-items: center;
+  flex-wrap: no-wrap; 
+  justify-content: center;
+}
+
+.phone{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.phone img{
+  margin-right: 10px;
+}
+
+.loc{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.loc img{
+  margin-right: 10px;
+}
+
+.contacts, .social, .login {
+  font-size: 0.9em;
+}
+
+.contacts img, .social img, .login img{
+  height:30px;
+  width: 30px;
+}
+
+.social{
+  display: flex;
+  margin-top: 10px;
+  flex:2;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.social a {
+    text-align: center;
+    width: 40px;
+    float: left;  
+    /*box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 50px rgba(0,0,0,0.1);*/
+    margin: 0 10px 10px 0;
+    padding: 6px;
+    color: #000;
+}
+
+
+.instagram a:hover {background: #3f729b; color: #fff; border-radius: 5px;}
+
+.facebook a:hover {background: #3b5998; color: #fff; border-radius: 5px;}
+
+.vk a:hover {background: #5d84ae; color: #fff; border-radius: 5px;}
+
+.odnoklassniki a:hover {background: #f93; color: #fff; border-radius: 5px;}
+
+.login{
+  display: flex;
+  flex:3;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login img:hover{
+  background-color: #F2F2F2;
+  border-radius: 3px;
+  cursor:pointer;
+}
+
+.login p{
+    padding:10px;
+    margin-bottom: 0; 
+}
+
+.login a{
+  color:#0275d8;
+  text-decoration: none;
+  line-height: 1.5em;
+}
+
+.login a:hover{
+  color:#01447e;
+  text-decoration: underline;
+}
+
+
+
+.loginbutton{ 
+  font-weight: 700;
+  color: #F2F2F2;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: #3D6D73;
+  transition: 0.2s;
+
+} 
+.login button {
+    width: 86%;
+    background:#00B74A;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:#F2F2F2;
+    border-radius:5px;
+    transition:0.3s background;
+}
+.login button:hover {
+    background:#63DB93;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .logo{flex:3;}
+
+  .contacts{flex:2;}
+  .social{flex: 1}
+  .login{flex:3;}
+  .contacts img, .social img, .login img{
+  height:25px;
+  width: 25px;
+}
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #3BA3D0;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #0772A1;
+}
+
+
+
+.topnav .icon {
+  display: none;
+}
+
+.ordercards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical-line{
+  height: 200px;
+}
+
+.card_container {
+  background-color: #fff;
+  padding: 1px 20px 20px 1px;
+  margin: 16px 0;
+  width: 40%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 600px) {
+  .card_container{
+    width: 100%;
+  }
+  .card_container button{
+    width: 30%;
+  }
+}
+
+.ttllink{
+  text-decoration: none;
+  color:#000;
+}
+
+.ttllink:hover{
+  text-decoration: none;
+  color:#000;
+}
+
+.card_container p{
+
+  line-height: 130%;
+
+}
+
+.card_container::after {
+
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.card_container img {
+  float: left;
+  margin-right: 20px;
+}
+
+.card_container span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.del{
+  margin-top: 3%;
+  width: 25%;
+    float:right;
+    background-color: #f44336;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.del:hover{
+    background-color: #FF7373;
+    cursor:pointer;
+}
+
+.pay{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#00B74A;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.pay:hover{
+   background:#63DB93;
+  cursor: pointer;
+}
+
+.more{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#3BA3D0;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+
+.more:hover{
+background:#0772A1;
+    cursor:pointer;
+}
+
+.vertical-line{ /* Use only border style */
+      height: : 100%;
+      float: left; 
+      border: 1px inset #DFDFDF; 
+      margin: 0px 10px 0px -10px;
+    }
+
+.card_imag{
+  margin: 15px 0px 0px 15px;
+  width:90px;
+}
+
+.card-img-top{
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.srvclst .breadcrumb{
+  background-color: #f2f2f2;
+}
+
+.srvclst h1{
+  font-size: 3em;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.srvclst .titlebtn{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  flex-wrap: wrap;
+}
+
+.srvclst .titlebtn button{
+  margin-left: 10px;
+}
+
+.filtersearch{
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.srvclst label{
+  margin-bottom: 1%;
+  margin-right: 10px;
+}
+
+.srvclst .col{
+  margin-bottom: 1%;
+}
+
+.srvclst .cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.srcvlast .card-footer form-check-input{
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .srvclst .card{width: 100%;}
+  .srvclst fieldset{width: 100%;}
+}
+
+.srvclst .card h2{
+  font-weight: bold;
+}
+
+
+
+.srvclst .card p{
+  line-height: 1.4em;
+}
+
+.srvclst .card a{
+  margin-top: 0.5%;
+}
+
+.srvclst .card span{
+  font-weight: bold;
+}
+
+.srvclst .card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.srvc .information{
+  width: 60%;
+  margin:0 20% 0 20%;
+}
+
+.srvc .information p{
+  margin: 1% 1% 1% 1%;
+}
+
+.srvc span{
+  font-weight: bold;
+}
+
+.srvc .btnspos{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.srvc .btnspos button{
+  margin: 1% 1% 1% 1%;
+}
+
+.pagination{
+  margin-bottom: 1%;
+}
+
+.mainfooter{
+  border-top: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.srvc .tab-content{
+  
+}
+
+.srvc #informationtab{
+  width: 35%;
+  margin: 1% 30% 0 30%;
+}
+
+.srvc #informationtab button{
+  margin-bottom: 1%;
+}
+
+.srvc #informationtab img{
+  width: 50%;
+  height: 50%;
+}
+
+@media screen and (max-width: 600px){
+    .srvc #informationtab{
+    width: 100%;
+    margin: 0 10% 0 10%;
+  }
+}
+
+.srvc .ordercards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.srvc .vertical-line{
+  height: 200px;
+}
+
+.srvc .card_container {
+  background-color: #fff;
+  padding: 1px 20px 20px 1px;
+  margin: 16px 0;
+  width: 40%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 600px) {
+  .srvc .card_container{
+    width: 100%;
+  }
+  .srvc .card_container button{
+    width: 30%;
+  }
+  .srvc h1{
+    margin-left: 10px;
+  }
+
+}
+
+.srvc .card_container p{
+
+  line-height: 130%;
+
+}
+
+.srvc .card_container::after {
+
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.srvc .card_container img {
+  float: left;
+  margin-right: 20px;
+}
+
+.srvc .card_container span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.srvc .del{
+  margin-top: 3%;
+  width: 25%;
+    float:right;
+    background-color: #f44336;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.srvc .del:hover{
+    background-color: #FF7373;
+    cursor:pointer;
+}
+
+.srvc .pay{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#00B74A;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.srvc .pay:hover{
+   background:#63DB93;
+  cursor: pointer;
+}
+
+.srvc .more{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#3BA3D0;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+
+.srvc .more:hover{
+background:#0772A1;
+    cursor:pointer;
+}
+
+ .srvc .vertical-line{ /* Use only border style */
+      height: : 100%;
+      float: left; 
+      border: 1px inset #DFDFDF; 
+      margin: 0px 10px 0px -10px;
+    }
+
+.srvc .card_imag{
+  margin: 15px 0px 0px 15px;
+  width:90px;
+}
+
+.srvc .lastreviews{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.srvc .lastreviewstitle{
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+}
+
+/*Отзыв на главной*/
+
+
+.srvc #badge {
+    background-image:url(https://distilleryimage7.s3.amazonaws.com/9bbd6768ecbf11e2b3e122000a1f9a4f_7.jpg);
+    background-size:100% 270px;
+    background-position:top;
+    background-repeat:no-repeat;
+    margin: 1rem;
+    width: 350px;
+    box-shadow:0px 1px 3px black, inset 0px 0px 2px white;
+    border-radius:4px;
+    background-color:white;
+}
+.srvc .lastreviews header {
+    margin: 2% 15% 2% 15%;
+    padding:0;
+}
+
+.srvc .lastreviews header img{
+  padding: 5px 5px 5px 5px;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.srvc .lastreviews section.all {
+    padding:20px 10px ;
+}
+.srvc .info {
+    padding:0 10px 20px;
+    border-bottom:1px solid #000;
+}
+.srvc .total {
+    font-size:14px;
+    float:left;
+}
+.srvc .total span {
+    font-size:32px;
+    font-weight:bold;
+}
+
+
+.srvc .list {
+    padding:0 10px;
+    overflow:auto;    
+     
+
+}
+.srvc .clear{
+  clear: both;
+}
+.srvc .list section.first {
+    margin-top: -20px;
+}
+.srvc .list section {
+  margin-bottom: 40px;
+}
+.srvc .lastreviews img {
+    float:left;
+    width:75px;
+    height:75px;
+    border-radius:80px;
+    margin-right:15px;
+}
+.srvc .comments h3 {
+    font-size:18px;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+.srvc .comments p {
+    font-size:14px;
+}
+.srvc .lastreviews a {
+    text-decoration:none;
+    color:#666;
+    transition:0.3s color;
+}
+.srvc .lastreviews a:hover {
+    color:#1bd5a7;
+}
+
+
+
+.editsrvc .information img{
+  width: 100%;
+  height: 400px;
+}
+
+.editsrvc .information button{
+  margin-top:1%;
+}
+
+.editsrvc .chklist { background-color:#fff;  border:2px solid #ccc; width:100%; height: 100px; overflow-y: scroll;}
+
+.wrkr h1{
+  text-align: center;
+}
+
+.wrkr .information{
+  display: flex;
+  
+}
+
+.wrkr .information fieldset{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.wrkr .information fieldset img{
+  width: 100%;
+  height: 150px;
+}
+.wrkr .information p{
+  line-height: 1.5em;
+}
+
+.wrkr .information label{
+  margin-left: 10px;
+}
+
+.wrkr .information{
+  display: flex;
+  justify-content: center;
+}
+
+.wrkr .ordercards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrkr .vertical-line{
+  height: 200px;
+}
+
+.wrkr .card_container {
+  background-color: #fff;
+  padding: 1px 20px 20px 1px;
+  margin: 16px 0;
+  width: 40%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 600px) {
+  .wrkr .information fieldset{
+    width: 100%;
+  }
+
+  .wrkr .card_container{
+    width: 100%;
+  }
+  .wrkr .card_container button{
+    width: 30%;
+  }
+  .wrkr h1{
+    margin-left: 10px;
+  }
+
+}
+
+.wrkr .card_container p{
+
+  line-height: 130%;
+
+}
+
+.wrkr .card_container::after {
+
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.wrkr .card_container img {
+  float: left;
+  margin-right: 20px;
+}
+
+.wrkr .card_container span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.wrkr .del{
+  margin-top: 3%;
+  width: 25%;
+    float:right;
+    background-color: #f44336;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.wrkr .del:hover{
+    background-color: #FF7373;
+    cursor:pointer;
+}
+
+.wrkr .pay{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#00B74A;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+.wrkr .pay:hover{
+   background:#63DB93;
+  cursor: pointer;
+}
+
+.wrkr .more{
+  margin-top: 3%;
+   width: 25%;
+    float:right;
+    background:#3BA3D0;
+    border: none;
+    margin-right: 10px;
+    padding:10px;
+    color:white;
+    border-radius:5px;
+    transition:0.3s background;
+}
+
+
+.wrkr .more:hover{
+background:#0772A1;
+    cursor:pointer;
+}
+
+ .wrkr .vertical-line{ /* Use only border style */
+      height: : 100%;
+      float: left; 
+      border: 1px inset #DFDFDF; 
+      margin: 0px 10px 0px -10px;
+    }
+
+.wrkr .card_imag{
+  margin: 15px 0px 0px 15px;
+  width:90px;
+}
+.wrkr .lastreviews{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrkr .lastreviewstitle{
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+}
+
+/*Отзыв на главной*/
+
+
+.wrkr #badge {
+    background-image:url(https://distilleryimage7.s3.amazonaws.com/9bbd6768ecbf11e2b3e122000a1f9a4f_7.jpg);
+    background-size:100% 270px;
+    background-position:top;
+    background-repeat:no-repeat;
+    margin: 1rem;
+    width: 350px;
+    box-shadow:0px 1px 3px black, inset 0px 0px 2px white;
+    border-radius:4px;
+    background-color:white;
+}
+.wrkr .lastreviews header {
+    margin: 2% 15% 2% 15%;
+    padding:0;
+}
+
+.wrkr .lastreviews header img{
+  padding: 5px 5px 5px 5px;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.wrkr .lastreviews section.all {
+    padding:20px 10px ;
+}
+.wrkr .info {
+    padding:0 10px 20px;
+    border-bottom:1px solid #000;
+}
+.wrkr .total {
+    font-size:14px;
+    float:left;
+}
+.wrkr .total span {
+    font-size:32px;
+    font-weight:bold;
+}
+
+
+.wrkr .list {
+    padding:0 10px;
+    overflow:auto;    
+     
+
+}
+.wrkr .clear{
+  clear: both;
+}
+.wrkr .list section.first {
+    margin-top: -20px;
+}
+.wrkr .list section {
+  margin-bottom: 40px;
+}
+.wrkr .lastreviews img {
+    float:left;
+    width:75px;
+    height:75px;
+    border-radius:80px;
+    margin-right:15px;
+}
+.wrkr .comments h3 {
+    font-size:18px;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+.wrkr .comments p {
+    font-size:14px;
+}
+.wrkr .lastreviews a {
+    text-decoration:none;
+    color:#666;
+    transition:0.3s color;
+}
+.wrkr .lastreviews a:hover {
+    color:#1bd5a7;
+}
+.wrkr .col{
+  margin-bottom: 1%;
+}
+
+.wrkr .cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.wrkr .card-footer form-check-input{
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .wrkr .card{width: 100%;}
+  fieldset{width: 100%;}
+}
+
+
+.wrkr .card h2{
+  font-weight: bold;
+}
+
+
+
+.wrkr .card p{
+  line-height: 1.4em;
+}
+
+.wrkr .card a{
+  margin-top: 0.5%;
+}
+
+.wrkr .card span{
+  font-weight: bold;
+}
+
+.wrkr .card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.wrkr .information{
+  width: 60%;
+  margin:0 20% 0 20%;
+}
+
+
+
+.wrkr span{
+  font-weight: bold;
+}
+
+
+
+.editwrkr .information button{
+  margin-top:1%;
+}
+
+.editwrkr .chklist { background-color:#fff;  border:2px solid #ccc; width:100%; height: 100px; overflow-y: scroll;}
+
+.rvwslst h1{
+  font-size: 3em;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.rvwslst .titlebtn{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+
+.rvwslst .titlebtn button{
+  margin-left: 10px;
+}
+
+
+.rvwslst .lastreviews{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rvwslst .lastreviewstitle{
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+}
+
+/*Отзыв на главной*/
+
+
+.rvwslst #badge {
+    background-image:url(https://distilleryimage7.s3.amazonaws.com/9bbd6768ecbf11e2b3e122000a1f9a4f_7.jpg);
+    background-size:100% 270px;
+    background-position:top;
+    background-repeat:no-repeat;
+    margin: 1rem;
+    width: 350px;
+    box-shadow:0px 1px 3px black, inset 0px 0px 2px white;
+    border-radius:4px;
+    background-color:white;
+}
+.rvwslst .lastreviews header {
+    margin: 2% 15% 2% 15%;
+    padding:0;
+}
+
+.rvwslst .lastreviews header img{
+  padding: 5px 5px 5px 5px;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.rvwslst .lastreviews section.all {
+    padding:20px 10px ;
+}
+.rvwslst .info {
+    padding:0 10px 20px;
+    border-bottom:1px solid #000;
+}
+.rvwslst .total {
+    font-size:14px;
+    float:left;
+}
+.rvwslst .total span {
+    font-size:32px;
+    font-weight:bold;
+}
+
+
+.rvwslst .list {
+    padding:0 10px;
+    overflow:auto;    
+     
+
+}
+.rvwslst .clear{
+  clear: both;
+}
+.rvwslst .list section.first {
+    margin-top: -20px;
+}
+.rvwslst .list section {
+  margin-bottom: 40px;
+}
+.rvwslst .lastreviews img {
+    float:left;
+    width:75px;
+    height:75px;
+    border-radius:80px;
+    margin-right:15px;
+}
+.rvwslst .comments h3 {
+    font-size:18px;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+.rvwslst .comments p {
+    font-size:14px;
+}
+
+
+.rvwslst .col{
+  margin-bottom: 1%;
+}

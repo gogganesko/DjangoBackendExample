@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1">
+	<title>Войти</title>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="mainheader">
+			<div class="logo">				
+				<img src="{% static 'img/newspaper.png' %}" alt="">
+				<p><a href="">Типография на Ленина</a></p>					 
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+				
+			</div>
+			<div class="social">
+
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+			<div class="login">
+				<img src="{% static 'img/user.png' %}" alt="">
+				{% if user.is_authenticated %}
+				<p><a href="#">{{user.username}}</a></p>
+				<a href="{% url 'logout' %}"><button class="loginbutton" type="button">Выйти</button></a>
+				{% else %}
+				<p><a href="{% url 'login' %}">Гость</a></p>
+				<a href="{% url 'login' %}"><button class="loginbutton" type="button">Войти</button></a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<div class="content autcont">
+		<div class="topnav" id="myTopnav">
+		  <a href="{% url 'main:index' %}">Главная</a>
+		  <a href="{% url 'services:index' %}" class="activem">Каталог</a>
+		  <a href="{% url 'services:sales' %}">Акции</a>
+		  <a href="{% url 'main:pay' %}">Оплата</a>
+		  <a href="{% url 'services:reviews' %}">Отзывы</a>
+		  <a href="{% url 'main:contacts' %}">Контакты</a>
+		  <a href="{% url 'users:index' %}">Работники</a>
+		  {% if user.is_authenticated %}
+		  <a href="{% url 'orders:orders' %}">Заказы</a>
+		  {% endif %}
+		  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+		    <i class="fa fa-bars"></i>
+		  </a>
+		</div>
+		<ul class="breadcrumb">
+		  <li><a href="{% url 'main:index' %}">Главная</a></li>
+		  <li class="activem">Авторизация</li>
+		</ul>	
+		<div class="welcometitle"><h1>Добро пожаловать!</h1></div>
+		<div class="enterform">
+		{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
+		<form method="post" action="{% url 'login' %}" style="border:1px solid #ccc">
+			{% csrf_token %}
+
+			  <div class="container">
+			    
+				  <p>{{ form.username.label_tag }}</p>
+				 	{{ form.username }}
+
+				<p>{{ form.password.label_tag }}</p>
+				  {{ form.password }}
+			    <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+			    <p><a href="{% url 'main:registration' %}">Регистрация?</a></p>
+			    <div class="btns">
+			    	<!-- <input type="submit" value="login" /> -->
+			    	 <a href=""><button type="submit"  class="signupbtn">Войти</button></a>
+					<input type="hidden" name="next" value="{{ next }}" />
+			    </div>
+			  </div>
+		</form>
+		</div>
+	</div>
+	<footer>
+		<div class="mainfooter">
+			<div class="logo">
+				<img src="{% static 'img/newspaper.png'%}" alt="">
+				<p>Типография на Ленина</p>
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+			</div>
+				
+			<div class="social">
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+ <script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+</body>
+
+</html>

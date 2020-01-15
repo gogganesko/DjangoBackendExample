@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1">
+	<title>Типография на Ленина</title>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+	<link rel="stylesheet" href="{% static 'lightzoom/style.css' %}" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="mainheader">
+			<div class="logo">				
+				<img src="{% static 'img/newspaper.png' %}" alt="">
+				<p><a href="">Типография на Ленина</a></p>					 
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+				
+			</div>
+			<div class="social">
+
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+			<div class="login">				
+				<img src="{% static 'img/user.png' %}" alt="">
+				{% if user.is_authenticated %}
+				<p><a href="#">{{user.username}}</a></p>
+				<a href="{% url 'logout' %}"><button class="loginbutton" type="button">Выйти</button></a>
+				{% else %}
+				<p><a href="{% url 'login' %}">Гость</a></p>
+				<a href="{% url 'login' %}"><button class="loginbutton" type="button">Войти</button></a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<div class="indexcont">
+	<div class="topnav" id="myTopnav">
+		  <a href="{% url 'main:index' %}">Главная</a>
+		  <a href="{% url 'services:index' %}" class="activem">Каталог</a>
+		  <a href="{% url 'services:sales' %}">Акции</a>
+		  <a href="{% url 'main:pay' %}">Оплата</a>
+		  <a href="{% url 'services:reviews' %}">Отзывы</a>
+		  <a href="{% url 'main:contacts' %}">Контакты</a>
+		  <a href="{% url 'users:index' %}">Работники</a>
+		  {% if user.is_authenticated %}
+		  <a href="{% url 'orders:orders' %}">Заказы</a>
+		  {% endif %}
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    <i class="fa fa-bars"></i>
+	  </a>
+	</div>
+	<div class="popularservises">
+	<h1>Популярные услуги</h1>
+		<div class="swiper-container">
+		    <!-- Additional required wrapper -->
+		    <div class="swiper-wrapper">
+		        <!-- Slides -->
+		        <div class="swiper-slide"><img src="{% static 'img/slider1.jpg'%}" alt=""></div>
+		        <div class="swiper-slide"><img src="{% static 'img/slider1.jpg'%}" alt=""></div>
+		        <div class="swiper-slide"><img src="{% static 'img/slider1.jpg'%}" alt=""></div>
+		        ...
+		    </div>
+		    <!-- If we need pagination -->
+		    <div class="swiper-pagination"></div>
+
+		    <!-- If we need navigation buttons -->
+		    <div class="swiper-button-prev"></div>
+		    <div class="swiper-button-next"></div>
+		</div>
+		<div class="allservicesbtnpos" ><a href="{% url 'services:index' %}"><button>Все услуги</button></a></div>		
+	</div>
+	
+	<div class="popularsales">
+		<h1>{% block indexsalestitle %}Популярные акции{% endblock %}</h1>
+		<div class="salescontent">
+			{% block indexsalescontent %}
+
+			{% endblock %}		
+		</div>
+	<div class="allsalesbtnpos"><a href="{% url 'services:sales' %}"><button class="allservicesbtn" class="allsalesbtn" type="button">Все акции</button></a></div>
+	<div class="lastreviewstitle"><h1>{% block indexreviewstitle %}Отзывы о нас{% endblock %}</h1></div>
+	<div class="lastreviews">
+			{% block indexreviewslist %}
+
+			{% endblock %}
+	</div>
+	<div class="allreviews"><a href="{% url 'services:reviews' %}"><button type="button">Все Отзывы</button></a><a href="{% url 'services:newreview' %}"><button type="button">Оставить отзыв</button></a></div>
+	</div>
+	<footer>
+		<div class="mainfooter">
+			<div class="logo">
+				<img src="{% static 'img/newspaper.png'%}" alt="">
+				<p>Типография на Ленина</p>
+			</div>
+			<div class="contacts">
+				<div class="phone"><img src="{% static 'img/phone.png' %}" alt="">
+				88005553535</div>
+				<div class="loc"><img src="{% static 'img/location.png' %}" alt="">
+				Ул. Ленина, д.11</div>
+			</div>
+				
+			<div class="social">
+				<div class="vk">
+    				<a href="#" target="_blank"><i class="fa fa-vk fa-2x"></i></a> 
+				</div>
+				<div class="odnoklassniki">
+    				<a href="#" target="_blank"><i class="fa fa-odnoklassniki fa-2x"></i></a>
+				</div>
+				<div class="facebook">
+    				<a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>    
+				</div>
+				<div class="instagram">
+    				<a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'lightzoom/lightzoom.js' %}"></script>
+ <script type="text/javascript">jQuery('.lightzoom').lightzoom({speed: 400, viewTitle: true});</script>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
+</script>
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+</body>
+
+</html>
